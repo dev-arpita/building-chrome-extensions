@@ -1,12 +1,17 @@
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
 
-const container = document.getElementById("container")
-
-container.innerHTML = "<button>Buy!</button>"
-
-// When clicked, render a paragraph under the button (in the container)
-// that says "Thank you for buying!"
-
-container.addEventListener("click", function () {
-   container.innerHTML += "<p>Thank you for buying!</p>"
-
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
 })
+
+// Replace .textContent with .innerHTML and use <li> tags
+for (let i = 0; i < myLeads.length; i++) {
+    ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+}
+
+
+
