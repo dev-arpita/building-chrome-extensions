@@ -1,21 +1,9 @@
-// What are greeting and name? parameters
-// What are "Howdy" and "James"? arguments
-// What are num1 and num2? parameters
-// What are 3 and 4? arguments
+// Create a function, getFirst(arr), that returns the first item in the array
 
-
-//.                parameters
-function greetUser(greeting, name) {
-    welcomeEl.textContent = `${greeting}, ${name} 👋`
+function getFirst(arr) {
+    return arr[0]
 }
 
-//.        arguments
-let hi = "Howdy"
-greetUser(hi, "James")
+console.log(getFirst([25, 30, 26]))
 
-
-function add(num1, num2) {
-    return num1 + num2
-}
-
-add(3, 4)
+// Call it with an array as an argument to verify that it works
