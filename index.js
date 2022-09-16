@@ -9,7 +9,7 @@ const tabBtn = document.getElementById("tab-btn")
 
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
-    renderLeads()
+    render(myLeads)
 }
 const tabs = [
     {url: "https://www.linkedin.com/in/per-harald-borgen/"}
@@ -17,16 +17,18 @@ const tabs = [
 
 // 2. Listen for clicks on tabBtn. Log Per's LinkedIn URL to the console
     tabBtn.addEventListener("click", function() {
-        console.log(tabs[0].url)
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads)
     })
 
-function renderLeads() {
+function render(leads) {
     let listItems = ""
-    for (let i = 0; i < myLeads.length; i++) {
+    for (let i = 0; i < leads.length; i++) {
         listItems += `
             <li>
-                <a target='_blank' href='${myLeads[i]}'>
-                    ${myLeads[i]}
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
                 </a>
             </li>
         `
@@ -37,12 +39,12 @@ function renderLeads() {
 deleteBtn.addEventListener("dblclick", function() {
     localStorage.clear()
     myLeads = []
-    renderLeads()
+    render(myLeads)
 })
 
 inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
     inputEl.value = ""
     localStorage.setItem("myLeads", JSON.stringify(myLeads) )
-    renderLeads()
+    render(myLeads)
 })
